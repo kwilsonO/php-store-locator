@@ -38,7 +38,7 @@ $queryresult = $conn->query($sql);
 
 if ($queryresult->num_rows > 0) {
     while($row = $queryresult->fetch_assoc()) {
-	echo $row;
+	printf("Name: %s, Phone: %s, Address: %s, Zip Code: %s <br>", $row["name"], $row["phone"], $row["address"], $row["zip_code"]);	
     }
 } else {
     echo "0 results";
