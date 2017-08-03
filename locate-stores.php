@@ -1,4 +1,3 @@
-
 <html>
 <body>
 
@@ -7,14 +6,16 @@ chdir(dirname(__FILE__));
 require_once 'secrets/zip-code-api-key.php';
 $zip_code = $_POST["zipcode"];
 $radius= $_POST["radius"];
+$apiurl = sprintf("https://www.zipcodeapi.com/rest/%s/radius.csv/%s/%s/miles?minimal", $api_key, $zip_code, $radius);
 ?>
 
 Current Zip Code: <?php echo $zip_code; ?><br>
 Radius Selected: <?php echo $radius; ?><br>
+API Key: <?php echo $api_key; ?><br>
+URL: <?php echo $apiurl; ?><br>
 
 <?php
-echo $api_key;
-$result=CallApi("GET", "https://www.zipcodeapi.com/rest/" . $api_key . "/radius.csv/" . $zip_code . "/" . $radius . "/miles");
+$result=CallApi("GET", $apiurl);
 echo $result;
 ?>
 
